@@ -1,0 +1,59 @@
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+  } @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. '+'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin orientation($position) {
+  @if $position==landscape {
+    @media only screen and (orientation: landscape) {
+      @content;
+    }
+  } @else if $position==portrait {
+    @media only screen and (orientation: portrait) {
+      @content;
+    }
+  }
+}
+
+// Medias querys
+$breakpoints: (
+  "m-1023": "(min-width: 0px) and (max-width: 1023px)",
+  "m-768": "(min-width: 0px) and (max-width: 768px)",
+  "m-500": "(min-width: 0px) and (max-width: 500px)",
+  "m-480": "(min-width: 0px) and (max-width: 480px)",
+  "m-380": "(min-width: 0px) and (max-width: 380px)"
+) !default;
+
+@font-face {
+  font-family: "helvetica";
+  src: url("/static/fonts/helvetica-light/Helvetica45Light22437.eot"); /* IE9 Compat Modes */
+  src: url("/static/fonts/helvetica-light/Helvetica45Light22437.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("/static/fonts/helvetica-light/Helvetica45Light22437.otf")
+      format("opentype"),
+    /* Open Type Font */
+      url("/static/fonts/helvetica-light/Helvetica45Light22437.svg")
+      format("svg"),
+    /* Legacy iOS */
+      url("/static/fonts/helvetica-light/Helvetica45Light22437.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("/static/fonts/helvetica-light/Helvetica45Light22437.woff")
+      format("woff"),
+    /* Modern Browsers */
+      url("/static/fonts/helvetica-light/Helvetica45Light22437.woff2")
+      format("woff2"); /* Modern Browsers */
+}
+
+//variables
+//fonts
+$H: "helvetica";
+
+//color
+$brown: #9b6e4f;
+$white: #ffffff;
